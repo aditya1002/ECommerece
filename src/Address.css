@@ -1,0 +1,27 @@
+.addcards{
+    padding-top: 30px;
+padding-left: 130px;
+}
+.newer{
+    padding-left: 100px;
+}
+.pathfinder{
+    font-size: large;
+}
+.newcards{
+    height: 200px;
+    width: 350px;
+    border: 1.2px dashed;
+    &:hover{
+        background-color: #999;
+    }
+    border: 1px solid  gray;
+    border-radius: 25px;
+}
+.addresscards{
+    border: 1px solid  hwb(0 50% 50%);
+    border-radius: 25px;
+}
+/* .cards{
+    box-shadow: 1px 7px gray;
+} */

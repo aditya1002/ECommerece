@@ -1,0 +1,49 @@
+.Box{
+    
+    position: absolute;
+    width: 100%;
+    @media (max-width: 1000px) {
+        padding: 70px 30px;
+      }
+    margin-top: 3.5px ;
+    background-image: linear-gradient(0,#402565 , #30BE96)
+}
+.Container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 05px 120px ;
+  
+    /* border: 1px Solid; */
+    
+}
+.Rows{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 
+                           minmax(185px, 1fr));
+    grid-gap: 20px;
+     
+    @media (max-width: 1000px) {
+      grid-template-columns: repeat(auto-fill, 
+                             minmax(200px, 1fr));
+    }
+}
+.Col{
+    display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-left: 60px;
+
+}
+.Link{
+    color: black;
+    margin-bottom: 20px;
+    font-size: 18px;
+    text-decoration: none;
+     
+    &:hover {
+        color: rgb(0, 243, 0);
+        transition: ease-in;
+    }
+}

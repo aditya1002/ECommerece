@@ -1,0 +1,52 @@
+.settings{
+    margin-top: 60px;
+    padding-top:30px ;
+    margin-bottom: 0px;
+    padding-bottom: 10px;
+}
+.Cardsetting{
+    border-bottom: black groove;
+    background-image:white;
+    margin-left: 200px;
+    margin-right: 100px;
+    padding-bottom: 10px;
+     border-style: initial;
+    border-radius: 20px;
+    border-color: rgb(237, 21, 21); 
+}
+.tabl{
+    /* border-style: groove; */
+    margin-left: 270px;
+    margin-right: 200px;
+    font-size: larger;
+    font-weight: bolder;
+    /* font-style: italic; */
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    border-bottom: groove;
+    border-color: beige;
+    
+}
+.settingsrow{
+    padding-left: 30px;
+   /* color: rgb(var(--ig-primary-text)); */
+   color: rgb(0, 0, 0);
+   font-size: large;
+   /* font-weight: 760; */
+}
+.But{
+    padding-left: 200px;
+    
+}
+.Bu{
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 1px 1px gray;
+    border-color: gray;
+    margin: 10px;
+    &:hover{
+        background-color: rgb(39, 39, 39);
+        transition: 0.2 s;
+        color: white;
+        border-color: gray;
+    }
+}

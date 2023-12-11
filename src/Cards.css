@@ -1,0 +1,28 @@
+
+ .cardsimage{
+    width: 250px;
+    height: 120px;
+   object-fit: cover;
+}
+.homercard{
+    border:2px ;
+    width:fit-content;
+    
+}
+.homecbody{
+    padding-left: 10px;
+    height:0px;
+    width: 200px;
+    height: max-content;
+
+}
+.cardcontainer{
+    padding: 58px;
+    top: 120px;
+    /*padding: 3rem 1rem;
+    box-shadow: 1px 1px 15px rgba(0, 0, 0, 0.2); */
+} 
+.rows{
+    border: 2px Solid;
+    margin : 200px;
+}

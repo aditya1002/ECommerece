@@ -1,0 +1,16 @@
+.login{
+    
+    z-index: 1;
+    margin: 95px 450px;
+    
+}
+.logincard{
+    width: max-content;
+    justify-content: center;
+   /* position: fixed; */
+ 
+
+}
+.logincard h3{
+    margin: 0px 160px;;
+}

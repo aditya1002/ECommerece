@@ -1,0 +1,11 @@
+.sideCard{
+   position:fixed;
+    margin-top: 60px;
+    margin-left: -7.6%;
+    height: 100%;
+    width:15%;
+    z-index: 1;
+}
+.l{
+    text-decoration: none;
+}

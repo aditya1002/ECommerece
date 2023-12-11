@@ -1,0 +1,94 @@
+
+.login{
+    /* z-index: 1; */
+    /* padding-right: 700px; */
+    /* border:2px solid;
+    justify-content: center; */
+    
+}
+.container-fluid-bg{
+    height: 595px;
+  
+    overflow: hidden;
+}
+.LoginImg{
+  width: 450px;
+  height: 390px;
+}
+
+.col-md-4{
+    padding-left: 10px;
+    padding-top: 100px;
+    padding-right: 350px;
+   
+}
+.cardimager{
+    max-height: 100px;
+    max-width: 100px;
+   margin-left: 200px;
+   border: 2px solid;
+   margin-top: 10px;
+   margin-bottom: 1px;
+   border-radius: 70px;
+   background-color: aliceblue;
+}
+.logincard{
+    width: max-content; 
+    justify-content: center;
+    color: bisque;
+   font-weight: 600;
+    margin-right: 130px;
+    
+     margin-bottom: 10px;
+     background-image: linear-gradient(0,#402662 , #3900A6);
+   
+     z-index:1;
+
+}
+.mb-3{
+    box-shadow: 0px 6px 07px 0px rgb(92, 145, 30); 
+    
+}
+.logincard h3{
+    padding-top:10px;
+    color: rgba(255, 98, 224, 0.781);
+}
+.Buttoons {
+    width:120px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 60px;
+    justify-content: center;
+    color: rgb(51, 46, 46);
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    &:hover{
+        background-color: brown;
+    }
+    
+}
+.Buttons {
+    width:120px;
+    height: 50px;
+    margin-top: 15px;
+    margin-left: 10px;
+    justify-content: center;
+    color: rgb(10, 9, 9);
+    font-weight: 500;
+    background-color: rgb(255, 255, 255);
+    &:hover{
+        background-color: brown;
+    }
+    
+}
+/* .secondary{
+    width:120px;
+    height: 50px;
+    margin-left: 90px;
+    justify-content: center;
+    background-color: aliceblue;
+    font-weight: 400;
+    &:hover{
+        background-color: brown;
+    }
+} */
