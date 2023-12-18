@@ -48,8 +48,12 @@ const LoginPass = (event) => {
       if(setloginStatus){
         userAuthenticated()
         localStorage.setItem("token",res.data.token);
-        if(res.data.token){
+        console.log();
+        if(res.data.token && res.data.result[0].role==='user'){
            navigate('/');
+        }
+        else if( res.data.token && res.data.result[0].role==='admin'){
+          navigate('/adminDashboard');
         }
         else{
           window.alert("No token please auth");

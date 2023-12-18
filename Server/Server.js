@@ -80,19 +80,139 @@ app.get("/ProductNo/:id",(req,res)=>{
         }
     })
 })
+app.get("/Stock&Inventory/Inventory",(req,res)=>{
+    db.query("Select id,title,price,Stock,Category from inventory",(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            console.log(result);
+            res.send(result);
+        }
+    })
+})
+app.get("/DashDetails/MaxCount",(req,res)=>{
+    // const limit = req.body.params;
+    var responser=[];
+    // db.query("Select stock,title,id from inventory order by Stock asc Limit ? ; ",[limit],(err,result)=>{
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     else{
+    //       //  console.log(result);
+    //         res.send(result);
+    //     }
+    // })
+    db.query("Select stock,title,id,image from inventory where Stock= (Select min(Stock) from inventory) ; ",(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+          //  console.log(result);
+            res.send(result);
+        }
+    })
+    
+})
+
+app.get("/OrderStatus",(req,res)=>{
+    db.query("Select image,title,price,DeliveryStatus,Address,id_Orders from inventory right join orders on orders.item_id = inventory.id",(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            // console.log(result);
+            res.send(result);
+        }
+    })
+})
+app.get("/DashDetails/Orders",(req,res)=>{
+    db.query("Select Count(id_Orders) as totalOrders, Sum(Cost+ShippingPrice) as TotalDayEarnings ,OrderDate as OnDay from orders group by OrderDate",(err,result)=>{
+        if(err){
+            console.log(err);
+        }
+        else{
+            // console.log(result);
+            res.send(result);
+        }
+    })
+})
+app.post("/DelStatus", (req, res) => {
+    const Status = req.body.DeliveryStatus;
+    const order = req.body.order;
+    db.query("Update orders Set DeliveryStatus =? Where id_Orders=? ",[Status,order],
+        (err, result) => {
+            if(err){
+
+                console.log(err);
+                var data = JSON.parse(JSON.stringify(err))
+                res.send(data);
+            }
+            else{
+                res.send("Okay");
+            }
+
+        }
+    );
+
+})
+app.post("/Signup/Seller", (req, res) => {
+    const name = req.body.name;
+    const email = req.body.Email;
+    const phone = req.body.phone;
+    const category = req.body.category;
+    const image = req.body.image;
+    const Title = req.body.title;
+    const password = req.body.password;
+    var role ="Seller";
+    db.query("INSERT INTO user (name,email,password,phone,role) VALUES (?,?,?,?,?)",
+        [name, email, password, phone,role],
+        (err, result) => {
+            if(err){
+
+                console.log(err);
+                var data = JSON.parse(JSON.stringify(err))
+                res.send(data);
+            }
+            else{
+                res.send("Okay");
+            }
+
+        }
+    );
+
+})
 app.post("/Signup", (req, res) => {
     const name = req.body.name;
     const email = req.body.Email;
     const phone = req.body.phone;
     const password = req.body.password;
-
-    console.log(name, email, phone, password);
-    db.query("INSERT INTO user (name,email,password,phone) VALUES (?,?,?,?)",
-        [name, email, password, phone],
+    var role;
+    var x = name.substring(0,3);
+    console.log(x);
+    if(name.substring(0,3)==='@ad'){
+        role = "admin";
+    }
+    else if(name.substring(0,3)==='@sel'){
+        role="seller";
+    }
+    else{
+        role="user";
+    }
+    var updatedname= name.substring(4,name.length);
+    console.log(updatedname,email,password,phone,role);
+    db.query("INSERT INTO user (name,email,password,phone,role) VALUES (?,?,?,?,?)",
+        [updatedname, email, password, phone,role],
         (err, result) => {
-            console.log(err);
-            var data = JSON.parse(JSON.stringify(err))
-            res.send(data);
+            if(err){
+
+                console.log(err);
+                var data = JSON.parse(JSON.stringify(err))
+                res.send(data);
+            }
+            else{
+                res.send("Okay");
+            }
 
         }
     );
@@ -299,7 +419,7 @@ const setOutput = (rows) => {
             })       
         }
         else{
-            db.query("INSERT into orders (item_id,Address,Quantity,DeliveryStatus,mobile,Cost,OrderDate) VALUES (?,?,?,?,?,?,?)",[parseInt(item[i]),billingaddress,parseInt(quants[i]),status,p,parseInt(pricestobeEntered[i]),date],(err,result)=>{
+            db.query("INSERT into orders (item_id,Address,Quantity,DeliveryStatus,mobile,Cost,OrderDate,ShippingPrice) VALUES (?,?,?,?,?,?,?,?)",[parseInt(item[i]),billingaddress,parseInt(quants[i]),status,p,parseInt(pricestobeEntered[i]),date,0],(err,result)=>{
                 if(err){
                     console.log(err);
                 }
@@ -479,8 +599,11 @@ app.post("/Login", (req, res) => {
         }
     );
 })
-app.listen(3001, () => {
-    console.log("server running");
+const port = process.env.PORT || 3001;
+const dotenv = require('dotenv');
+dotenv.config();
+app.listen(port, () => {
+    console.log("server running on port",port);
 });
 
 

@@ -20,11 +20,32 @@ import UserOrders from './UserOrders';
 import ProductPage from './ProductPage';
 import Shop from './Shop';
 import Food from './Food';
+import { createContext, useContext, useReducer,useEffect } from 'react'
+import AdminDash from './AdminDash';
+import StockDetails from './StockDetails';
+import Incomes from './Incomes';
+import SellerSignup from './SellerSignup';
+import OrderCare from './OrderCare';
+export const NameContext = createContext();
+ 
+// Create a Context Provider
+const NameContextProvider = ({ children }) => {
+    const [min, setMin] = useState(undefined);
+    const [max, setMax] = useState(undefined);
+    const[prime,setPrime] = useState(undefined);
+    const[stock,setStock] =useState(undefined);
+    return (
+        <NameContext.Provider value={{ min, setMin,max,setMax,stock,setStock,prime,setPrime }}>
+            {children}
+        </NameContext.Provider>
+    );
+};
 function App() {
   return (
     <>
       <BrowserRouter>
         <div className="App">
+        <NameContextProvider>
           <Routes>
             <Route path="/" element={<Home />}>
             </Route>
@@ -58,7 +79,18 @@ function App() {
             </Route>
             <Route path="/Food" element={<Food/>}>
             </Route>
+            <Route path="/adminDashboard" element={<AdminDash/>}>
+            </Route>
+            <Route path="/StockDetails" element={<StockDetails/>}>
+            </Route>
+            <Route path="/Accounts/Incomes" element={<Incomes/>}>
+            </Route>
+            <Route path="/SellerSignup" element={<SellerSignup/>}>
+            </Route>
+            <Route path="/OrderCare" element={<OrderCare/>}>
+            </Route>
           </Routes>
+          </NameContextProvider>
         </div>
       </BrowserRouter>
     </>

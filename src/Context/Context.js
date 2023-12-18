@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useReducer } from 'react'
+import React, { createContext, useContext, useReducer,useState } from 'react'
 // import {proddata} from "../data";
 import data from "../data";
 import { cartReducer } from './Reducer';
 const Cart=createContext();
+
 const Context = ({children}) => {
     // const products = proddata;
     const products = data;
@@ -11,14 +12,13 @@ const Context = ({children}) => {
       products: products,
       cart: [],
     });
-      console.log(products);
+      // console.log(products);
     
       return (
         <>
         <Cart.Provider value={{ state, dispatch }}>
           {children}
         </Cart.Provider>
-        
         </>
       );
     };

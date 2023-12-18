@@ -6,25 +6,29 @@ import Card from 'react-bootstrap/Card';
 import "./Signup.css";
 import Axios from 'axios';
 import { useState } from 'react';
-const Signup = (e) => {
+import AdminNavBar from './AdminNavBar';
+export default function SellerSignup() {
     const [phoneNumber, changePhonenumber] = useState("");
-    const [password, changepassword] = useState("");
+    const [category, Category] = useState("");
     const [name, changeName] = useState("");
     const [Email, changeEmail] = useState("");
-    
+    const [image, changeimage] = useState("");
+    const [title, changetitle] = useState("");
+    const[password,changepassword]=useState("");
     const handleSubmit=()=>{
-      if(!phoneNumber|| !password || !name|| !Email){
+      if(!phoneNumber|| !category || !name|| !Email){
         window.alert("please fill all the fields");
       }
       else if(isNaN(phoneNumber)){
         window.alert("Enter Phone Number")
       }
       else{
-        Axios.post("http://localhost:3001/Signup",{
+        Axios.post("http://localhost:3001/Signup/Seller",{
             name: name,
             phone:phoneNumber,
             Email:Email,
-            password:password
+            password:password,
+           
         }).then((res)=>{
             if(res.data ==="okay"){
               window.alert("Signed up successfully");
@@ -33,10 +37,9 @@ const Signup = (e) => {
       }
        
     }
-
   return (
-   <>
-    <NavBar/>
+    <>
+    <AdminNavBar/>
     <div className="login">
     <Card className="logincard">
       <Card.Body >
@@ -52,10 +55,9 @@ const Signup = (e) => {
           We'll never share your email with anyone else.
         </Form.Text>
       </Form.Group>
-
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" onChange={(e)=>{changepassword(e.target.value);}}/>
+        <Form.Control type="password" placeholder="password" onChange={(e)=>{changepassword(e.target.value);}}/>
       </Form.Group>
       <Button variant="primary" type="submit" onClick={handleSubmit} >
         Submit
@@ -64,8 +66,6 @@ const Signup = (e) => {
       </Card.Body>
       </Card>
       </div>
-   </>
+    </>
   )
 }
-
-export default Signup

@@ -124,7 +124,7 @@ export default function Checkout() {
             DeliveryStatus:DeliveryStatus,
             date:date
        }).then((response)=>{
-        if(response.data=="Okay"){
+        if(response.data==="Okay"){
             window.alert("Order Placed Successfully");
             window.location.reload();
             navigate('/');

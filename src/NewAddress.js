@@ -32,6 +32,7 @@ export default function () {
    const handleChange=(e)=> {
       setChecked(e.target.checked);
    }
+   // eslint-disable-next-line no-unused-vars
    const handle=(e)=>{
     changeState(e.target.value);
    }
@@ -87,8 +88,22 @@ export default function () {
                             <Form.Group className="mb-3" controlId="formBasicPassword">
                                 <Form.Label>State</Form.Label>
                                 <br />
-                                <Form.Control type="text" controlId="formBasicPhone" onChange={(e) => { changeState(e.target.value); }} />
-                                {/* <Form.Select id="country-state" name="country-state" onSelect={(e) => { handle(e.target.name); }}>
+                                <Form.Control type="text" controlId="formBasicPhone" onChange={(e) => { changeState(e.target.value); }}/>
+                            </Form.Group>
+                            <input value = "test" type = "checkbox" onChange = {handleChange}/><span> Set as Default</span> <br/>
+                            <Button variant="primary" type="submit" onClick={AddressSubmit}>
+                                Submit
+                            </Button>
+                        </Form>
+                    </Card.Body>
+                </Card>
+                </Container>
+            </div>
+            <Footer/>
+        </>
+    )
+}
+ {/* <Form.Select id="country-state" name="country-state" onSelect={(e) => { handle(e.target.name); }}>
                                     <option >Select state</option>
                                     <option >Andaman and Nicobar Islands</option>
                                     <option >Andhra Pradesh</option>
@@ -128,17 +143,3 @@ export default function () {
                                     <option >Uttarakhand</option>
                                     <option >West Bengal</option>
                                 </Form.Select> */}
-                            </Form.Group>
-                            <input value = "test" type = "checkbox" onChange = {handleChange}/><span> Set as Default</span> <br/>
-                            <Button variant="primary" type="submit" onClick={AddressSubmit}>
-                                Submit
-                            </Button>
-                        </Form>
-                    </Card.Body>
-                </Card>
-                </Container>
-            </div>
-            <Footer/>
-        </>
-    )
-}
